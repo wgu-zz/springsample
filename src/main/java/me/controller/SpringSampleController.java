@@ -11,11 +11,13 @@ public class SpringSampleController {
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
+	@Autowired
+	private String string;
 
 	@RequestMapping("/sampleroot")
 	@ResponseBody
 	public void sampleroot() throws Exception {
-		System.out.println(System.getenv("VCAP_SERVICES"));
+		System.out.println(string);
 		System.out.println(jdbcTemplate.getDataSource().getConnection());
 	}
 

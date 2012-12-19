@@ -58,7 +58,7 @@
 		<dependency>
 			<groupId>org.cloudfoundry</groupId>
 			<artifactId>cloudfoundry-runtime</artifactId>
-			<version>0.8.1</version>
+			<version>0.8.2</version>
 		</dependency>
 	</dependencies>
 
@@ -79,7 +79,7 @@
 	</repositories>
 
 	<build>
-		<finalName>springtest</finalName>
+		<finalName>springsample</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.mortbay.jetty</groupId>
