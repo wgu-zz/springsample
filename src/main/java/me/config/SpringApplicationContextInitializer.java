@@ -13,26 +13,10 @@ public class SpringApplicationContextInitializer implements
 		return cloudEnvironment.isCloudFoundry();
 	}
 
-	private boolean isAppFog() {
-		if (!isCloudFoundry())
-			return false;
-		String cloudApiUri = cloudEnvironment.getCloudApiUri().toLowerCase();
-		return (cloudApiUri.contains(".af"));
-	}
-
-	private boolean isLocal() {
-		return !isCloudFoundry();
-	}
-
 	public void initialize(
 			AnnotationConfigWebApplicationContext applicationContext) {
 
-		String profile = "default";
-		if (isAppFog()) {
-			profile = "appfog";
-		} else if (isCloudFoundry()) {
-			profile = "cloud";
-		}
+		String profile = isCloudFoundry() ? "cloud" : "default";
 		applicationContext.getEnvironment().setActiveProfiles(profile);
 
 		Class<?>[] configs = { SpringConfiguration.class };
